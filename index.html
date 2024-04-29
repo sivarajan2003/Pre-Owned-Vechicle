@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preowned Vehicle Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSLU2bdF6wo8zXj/5dGXpSNkTkPH7EjHJ/zp3h" crossorigin="anonymous">
+    <style>
+        .container {
+            padding-top: 50px; 
+        }
+        .form-group {
+            margin-bottom: 15px; 
+        }
+        #formResult {
+            display: none;
+        }
+        #vehicleForm {
+            background-color: #cb4a12;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Preowned Vehicle Form</h2>
+        <form id="vehicleForm">
+            <div class="form-group">
+                <label for="make">Make</label>
+                <input type="text" class="form-control" id="make" placeholder="Enter Make">
+            </div>
+            <div class="form-group">
+                <label for="model">Model</label>
+                <input type="text" class="form-control" id="model" placeholder="Enter Model">
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <input type="number" class="form-control" id="year" placeholder="Enter Year">
+            </div>
+            <div class="form-group">
+                <label for="mileage">Mileage</label>
+                <input type="number" class="form-control" id="mileage" placeholder="Enter Mileage">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+         <div id="formResult">
+            <h3>Submitted Form Data:</h3>
+            <p id="makeResult"></p>
+            <p id="modelResult"></p>
+            <p id="yearResult"></p>
+            <p id="mileageResult"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("vehicleForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+            var make = document.getElementById("make").value;
+            var model = document.getElementById("model").value;
+            var year = document.getElementById("year").value;
+            var mileage = document.getElementById("mileage").value;
+            document.getElementById("makeResult").innerText = "Make: " + make;
+            document.getElementById("modelResult").innerText = "Model: " + model;
+            document.getElementById("yearResult").innerText = "Year: " + year;
+            document.getElementById("mileageResult").innerText = "Mileage: " + mileage;
+            document.getElementById("formResult").style.display = "block";
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-ZpWtYSU/8PcXy3tKZfO8YPANX9IMQ+P6Dl5DnAIE/Jb3vQlopf6y3hOa6OgWf1S0" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy4Ck4SOF4y4Ck4C2DgHfViXydVeLm+JDM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Successful</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+body {
+    background: rgba(13, 13, 13, 0.943) url('back1.jpg') center center fixed;
+    background-size: cover;
+    background-blend-mode: color-burn;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.success-icon {
+    margin-bottom: 20px;
+    font-size: 48px;
+    color: #28a745; 
+}
+.success-message {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #28a745; 
+}
+.letter {
+    display: none;
+    margin-top: 30px;
+    font-size: 18px;
+    text-align: center;
+    color: #4ec31c; 
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="success-message">
+        <p>Thank you for registering your pre-owned vehicle!</p>
+    </div>
+    <a href="form.html" class="btn btn-primary back-button">Register Another Vehicle</a>
+    <div class="letter">
+        <p>This is your registration confirmation. You can further customize it if needed.</p>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+    $(".back-button").click(function(){
+        $(".letter").fadeIn();
+    });
+});
+</script>
+</body>
+</html>

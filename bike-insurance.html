@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bikeInsuranceApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Bike Insurance Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            background-image: url('bike1.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+        }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="number"], input[type="email"], input[type="date"], input[type="file"] { width: 100%; max-width: 300px; padding: 8px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:disabled { background-color: #ccc; }
+        .error { color: red; font-size: 0.85rem; }
+        .submitted-data { margin-top: 30px; }
+    </style>
+</head>
+<body ng-controller="InsuranceFormController">
+    <h1>Bike Insurance Form</h1>
+    <form name="insuranceForm" ng-submit="insuranceForm.$valid && submitForm()" novalidate>
+        <div class="form-group">
+            <label for="owner">Owner's Name:</label>
+            <input type="text" id="owner" ng-model="insurance.owner" required>
+            <span class="error" ng-show="insuranceForm.owner.$error.required && insuranceForm.owner.$dirty">Owner's name is required.</span>
+        </div>
+        <div class="form-group">
+            <label for="email">Owner's Email:</label>
+            <input type="email" id="email" ng-model="insurance.email" required>
+            <span class="error" ng-show="insuranceForm.email.$error.required && insuranceForm.email.$dirty">Valid email is required.</span>
+        </div>
+        <div class="form-group">
+            <label for="make">Bike Make:</label>
+            <input type="text" id="make" ng-model="insurance.make" required>
+        </div>
+        <div class="form-group">
+            <label for="model">Bike Model:</label>
+            <input type="text" id="model" ng-model="insurance.model" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Bike Year:</label>
+            <input type="number" id="year" ng-model="insurance.year" required min="1900" max="{{currentYear}}">
+        </div>
+        <div class="form-group">
+            <label for="vin">VIN (Vehicle Identification Number):</label>
+            <input type="text" id="vin" ng-model="insurance.vin">
+        </div>
+        <div class="form-group">
+            <label for="engine">Engine Capacity (cc):</label>
+            <input type="number" id="engine" ng-model="insurance.engine" required min="50">
+        </div>
+        <div class="form-group">
+            <label for="start-date">Insurance Start Date:</label>
+            <input type="date" id="start-date" ng-model="insurance.startDate" required>
+        </div>
+        <div class="form-group">
+            <label for="value">Estimated Value ($):</label>
+            <input type="number" id="value" ng-model="insurance.value" required min="100">
+        </div>
+        <div class="form-group">
+            <label for="bike-image">Bike Image:</label>
+            <input type="file" id="bike-image" accept="image/*" ng-model="insurance.image" onchange="angular.element(this).scope().updateImage(this)">
+        </div>
+        <div class="form-group">
+            <button type="submit" ng-disabled="insuranceForm.$invalid">Submit</button>
+        </div>
+    </form>
+
+    <div class="submitted-data" ng-if="submitted">
+        <h2>Submitted Data</h2>
+        <ul>
+            <li><strong>Owner's Name:</strong> {{insurance.owner}}</li>
+            <li><strong>Owner's Email:</strong> {{insurance.email}}</li>
+            <li><strong>Bike Make:</strong> {{insurance.make}}</li>
+            <li><strong>Bike Model:</strong> {{insurance.model}}</li>
+            <li><strong>Bike Year:</strong> {{insurance.year}}</li>
+            <li><strong>VIN:</strong> {{insurance.vin}}</li>
+            <li><strong>Engine Capacity:</strong> {{insurance.engine}}</li>
+            <li><strong>Insurance Start Date:</strong> {{insurance.startDate | date:'MM/dd/yyyy'}}</li>
+            <li><strong>Estimated Value:</strong> ${{insurance.value}}</li>
+        </ul>
+        <a href="Home.html">Go Back</a>
+    </div>
+
+    <script>
+        angular.module('bikeInsuranceApp', [])
+            .controller('InsuranceFormController', function($scope) {
+                $scope.currentYear = new Date().getFullYear();
+                $scope.insurance = {};
+                $scope.submitted = false;
+
+                $scope.submitForm = function() {
+                    console.log('Form Submitted', $scope.insurance);
+                    $scope.submitted = true;
+                };
+
+                $scope.updateImage = function(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $scope.insurance.image = e.target.result;
+                            $scope.$apply();
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                };
+            });
+    </script>
+</body>
+</html>

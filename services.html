@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Owned Vehicles Services</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+    <style>
+        .output-block {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary"> <!-- Changed bg-light to bg-primary -->
+        <a class="navbar-brand" href="#">Pre-Owned Vehicles</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="Home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="supercars.html">Super cars</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="form.html">Form</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bike-insurance.html">bike insurance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Ex8.html">VehicleInformationForm</a>
+                </li>
+                <!-- Search form -->
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+<section class="services">
+    <div class="container">
+        <h2 class="text-center my-5">Pre-Owned Vehicles Services Form</h2>
+        <form id="pre-owned-services-form">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Your Phone Number:</label>
+                <input type="tel" id="phone" name="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="service">Select Service:</label>
+                <select id="service" name="service" class="form-control" required>
+                    <option value="">Select a service</option>
+                    <option value="Vehicle Inspection">Vehicle Inspection</option>
+                    <option value="Extended Warranty">Extended Warranty</option>
+                    <option value="Flexible Financing">Flexible Financing</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vehicle-type">Select Vehicle Type:</label>
+                <select id="vehicle-type" name="vehicle-type" class="form-control" required>
+                    <option value="">Select a vehicle type</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Truck">Truck</option>
+                    <option value="Van">Van</option>
+                    <option value="Motorcycle">Motorcycle</option>
+                </select>
+            </div>
+            <button type="button" id="submit-btn" class="btn btn-primary">Submit</button>
+        </form>
+        <div id="output"></div>
+        <br>
+    </div>
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#submit-btn').click(function(){
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var phone = $('#phone').val();
+            var service = $('#service').val();
+            var vehicleType = $('#vehicle-type').val();
+            
+            // Here you can process the form data as needed
+            // For demonstration purposes, let's just display the data in the output div
+            var outputText = "<p>Name: " + name + "</p>";
+            outputText += "<p>Email: " + email + "</p>";
+            outputText += "<p>Phone: " + phone + "</p>";
+            outputText += "<p>Service: " + service + "</p>";
+            outputText += "<p>Vehicle Type: " + vehicleType + "</p>";
+            
+            $('#output').html(outputText);
+        });
+    });
+</script>
+</body>
+</html>
